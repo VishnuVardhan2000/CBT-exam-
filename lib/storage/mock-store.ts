@@ -566,15 +566,15 @@ export const INITIAL_TESTS: Test[] = [
 export const MOCK_USERS: UserProfile[] = [
   {
     id: 'usr_admin_1',
-    email: 'admin@mockcbt.com',
-    fullName: 'Chief Exam Controller (Admin)',
+    email: '',
+    fullName: 'Exam Admin',
     role: 'admin',
     createdAt: '2026-01-01T00:00:00Z'
   },
   {
     id: 'usr_candidate_1',
-    email: 'candidate@mockcbt.com',
-    fullName: 'SBI PO Candidate',
+    email: '',
+    fullName: 'Candidate',
     role: 'candidate',
     targetYear: 2026,
     createdAt: '2026-01-02T00:00:00Z'

@@ -5,25 +5,29 @@ import Link from 'next/link';
 import { Play, Award, Clock, CheckCircle2, TrendingUp, ArrowRight, User, AlertTriangle, Target, BookOpen } from 'lucide-react';
 import { getTests, getAttempts, getCandidateAnalytics } from '@/lib/repository';
 import { getActiveUser } from '@/lib/auth/store';
-import { Test, AttemptResult, CandidateProgressSnapshot } from '@/types';
+import { Test, AttemptResult, CandidateProgressSnapshot, UserProfile } from '@/types';
 
 export default function CandidateDashboardPage() {
-  const currentUser = getActiveUser();
+  const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
   const [tests, setTests] = useState<Test[]>([]);
   const [recentAttempts, setRecentAttempts] = useState<AttemptResult[]>([]);
   const [analytics, setAnalytics] = useState<CandidateProgressSnapshot | null>(null);
 
   useEffect(() => {
+    const user = getActiveUser();
+    setCurrentUser(user);
+
     const allTests = getTests().filter(t => t.isPublished);
-    const userAttempts = getAttempts().filter(a => a.candidateId === currentUser.id);
-    const progress = getCandidateAnalytics(currentUser.id);
+    const userAttempts = user ? getAttempts().filter(a => a.candidateId === user.id) : [];
+    const progress = user ? getCandidateAnalytics(user.id) : null;
 
     setTests(allTests);
     setRecentAttempts(userAttempts);
     setAnalytics(progress);
-  }, [currentUser.id]);
+  }, []);
 
   const latestAttempt = recentAttempts[0];
+  const greetingName = currentUser?.fullName || 'Candidate';
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
@@ -33,9 +37,9 @@ export default function CandidateDashboardPage() {
         <div className="space-y-2">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold">
             <Target className="w-3.5 h-3.5" />
-            <span>Target: SBI PO Preliminary {currentUser.targetYear || 2026}</span>
+            <span>Target: SBI PO Preliminary {currentUser?.targetYear || 2026}</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white">Welcome back, {currentUser.fullName}!</h1>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-white">Welcome back, {greetingName}!</h1>
           <p className="text-xs sm:text-sm text-slate-400 max-w-xl leading-relaxed">
             Practice 100-question Preliminary mock tests under strict 20-minute sectional timing and single-confirmation answer locks.
           </p>

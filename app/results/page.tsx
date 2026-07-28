@@ -8,13 +8,17 @@ import { getActiveUser } from '@/lib/auth/store';
 import { AttemptResult } from '@/types';
 
 export default function ResultsHistoryPage() {
-  const currentUser = getActiveUser();
   const [attempts, setAttempts] = useState<AttemptResult[]>([]);
 
   useEffect(() => {
-    const userAttempts = getAttempts().filter(a => a.candidateId === currentUser.id);
-    setAttempts(userAttempts);
-  }, [currentUser.id]);
+    const user = getActiveUser();
+    if (user) {
+      const userAttempts = getAttempts().filter(a => a.candidateId === user.id);
+      setAttempts(userAttempts);
+    } else {
+      setAttempts([]);
+    }
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
@@ -34,8 +38,8 @@ export default function ResultsHistoryPage() {
 
         {attempts.length === 0 ? (
           <div className="text-center py-10 text-xs text-slate-400 bg-slate-950 rounded-xl border border-slate-800 space-y-3">
-            <p>You have not completed any mock test attempts yet.</p>
-            <Link href="/tests" className="px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-xl inline-block">
+            <p>No completed test attempts recorded yet.</p>
+            <Link href="/tests" className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl inline-block shadow-lg shadow-blue-600/20">
               Start Your First Mock Test
             </Link>
           </div>

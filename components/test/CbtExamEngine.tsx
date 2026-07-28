@@ -159,12 +159,15 @@ export default function CbtExamEngine({ test }: CbtExamEngineProps) {
 
   // Submit test handler
   const handleFinalSubmit = (status: 'submitted' | 'expired' = 'submitted') => {
+    const candidateId = currentUser?.id || 'usr_candidate';
+    const candidateName = currentUser?.fullName || 'Candidate';
+
     const result = calculateAttemptScore(
       attemptIdRef.current,
       test.id,
       test.title,
-      currentUser.id,
-      currentUser.fullName,
+      candidateId,
+      candidateName,
       startedAtRef.current,
       new Date().toISOString(),
       questions,
@@ -172,7 +175,7 @@ export default function CbtExamEngine({ test }: CbtExamEngineProps) {
     );
 
     saveAttemptResult(result);
-    router.push(`/candidate/results/${result.id}`);
+    router.push(`/results/${result.id}`);
   };
 
   const formatTime = (seconds: number) => {

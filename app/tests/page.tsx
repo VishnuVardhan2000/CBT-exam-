@@ -8,14 +8,18 @@ import { getActiveUser } from '@/lib/auth/store';
 import { Test, AttemptResult } from '@/types';
 
 export default function TestsCatalogPage() {
-  const currentUser = getActiveUser();
   const [tests, setTests] = useState<Test[]>([]);
   const [attempts, setAttempts] = useState<AttemptResult[]>([]);
 
   useEffect(() => {
+    const user = getActiveUser();
     setTests(getTests().filter(t => t.isPublished));
-    setAttempts(getAttempts().filter(a => a.candidateId === currentUser.id));
-  }, [currentUser.id]);
+    if (user) {
+      setAttempts(getAttempts().filter(a => a.candidateId === user.id));
+    } else {
+      setAttempts([]);
+    }
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">

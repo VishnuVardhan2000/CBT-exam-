@@ -1,10 +1,9 @@
 import { UserProfile, UserRole } from '@/types';
-import { MOCK_USERS } from '@/lib/storage/mock-store';
 
 const AUTH_STORAGE_KEY = 'sbi_mock_cbt_user';
 
-export function getActiveUser(): UserProfile {
-  if (typeof window === 'undefined') return MOCK_USERS[1]; // Default candidate for SSR
+export function getActiveUser(): UserProfile | null {
+  if (typeof window === 'undefined') return null;
 
   try {
     const saved = localStorage.getItem(AUTH_STORAGE_KEY);
@@ -15,8 +14,7 @@ export function getActiveUser(): UserProfile {
     console.error('Failed to parse auth user', e);
   }
 
-  // Default candidate
-  return MOCK_USERS[1];
+  return null;
 }
 
 export function setActiveUser(user: UserProfile): void {
@@ -26,9 +24,25 @@ export function setActiveUser(user: UserProfile): void {
 }
 
 export function switchRole(role: UserRole): UserProfile {
-  const targetUser = MOCK_USERS.find(u => u.role === role) || MOCK_USERS[1];
-  setActiveUser(targetUser);
-  return targetUser;
+  const user: UserProfile = role === 'admin'
+    ? {
+        id: 'usr_admin',
+        email: '',
+        fullName: 'Exam Admin',
+        role: 'admin',
+        createdAt: new Date().toISOString()
+      }
+    : {
+        id: 'usr_candidate',
+        email: '',
+        fullName: 'Candidate',
+        role: 'candidate',
+        targetYear: 2026,
+        createdAt: new Date().toISOString()
+      };
+
+  setActiveUser(user);
+  return user;
 }
 
 export function logoutUser(): void {

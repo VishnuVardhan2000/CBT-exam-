@@ -5,37 +5,31 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Shield, User, Lock, Mail, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { switchRole, setActiveUser } from '@/lib/auth/store';
-import { MOCK_USERS } from '@/lib/storage/mock-store';
 import { UserRole } from '@/types';
 
 export default function LoginPage() {
   const router = useRouter();
   const [role, setRole] = useState<UserRole>('candidate');
-  const [email, setEmail] = useState<string>('candidate@mockcbt.com');
-  const [password, setPassword] = useState<string>('password123');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const user = MOCK_USERS.find(u => u.role === role) || MOCK_USERS[1];
+    const user = switchRole(role);
     setActiveUser({
       ...user,
-      email: email || user.email
+      email: email || (role === 'admin' ? 'admin@exam.com' : 'candidate@exam.com')
     });
 
     if (role === 'admin') {
       router.push('/admin/dashboard');
     } else {
-      router.push('/candidate/dashboard');
+      router.push('/dashboard');
     }
   };
 
-  const handleSelectQuickDemo = (selectedRole: UserRole) => {
+  const handleSelectQuickRole = (selectedRole: UserRole) => {
     setRole(selectedRole);
-    if (selectedRole === 'admin') {
-      setEmail('admin@mockcbt.com');
-    } else {
-      setEmail('candidate@mockcbt.com');
-    }
   };
 
   return (
@@ -50,11 +44,11 @@ export default function LoginPage() {
           <p className="text-xs text-slate-400">SBI PO Preliminary Online Mock Testing Platform</p>
         </div>
 
-        {/* Quick Role Switcher */}
+        {/* Role Switcher */}
         <div className="bg-slate-950 p-1.5 rounded-2xl border border-slate-800 grid grid-cols-2 gap-1 text-xs font-semibold">
           <button
             type="button"
-            onClick={() => handleSelectQuickDemo('candidate')}
+            onClick={() => handleSelectQuickRole('candidate')}
             className={`py-2 rounded-xl flex items-center justify-center space-x-1.5 transition ${
               role === 'candidate'
                 ? 'bg-blue-600 text-white shadow-md'
@@ -67,7 +61,7 @@ export default function LoginPage() {
 
           <button
             type="button"
-            onClick={() => handleSelectQuickDemo('admin')}
+            onClick={() => handleSelectQuickRole('admin')}
             className={`py-2 rounded-xl flex items-center justify-center space-x-1.5 transition ${
               role === 'admin'
                 ? 'bg-purple-600 text-white shadow-md'
@@ -88,9 +82,10 @@ export default function LoginPage() {
               <input
                 type="email"
                 required
+                placeholder="enter your email..."
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-slate-100 focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500"
               />
             </div>
           </div>
@@ -102,9 +97,10 @@ export default function LoginPage() {
               <input
                 type="password"
                 required
+                placeholder="••••••••"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-slate-100 focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500"
               />
             </div>
           </div>
