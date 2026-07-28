@@ -1,0 +1,310 @@
+SBI PO PRELIMINARY OFFICIAL MEMORY BASED QUESTION PAPER 2025
+Source Location: /source-files/pdfs/SBI_PO_Prelims_2025_Memory_Paper.pdf
+Total Questions: 100
+Duration: 60 Minutes (20 Mins / Section)
+
+====================================================================
+SECTION 1: ENGLISH LANGUAGE (30 QUESTIONS: Q1 - Q30)
+====================================================================
+
+[Directions Q1-Q10]: Read the following passage carefully and answer the questions that follow.
+
+The digital transformation of the Indian banking sector has accelerated dramatically over the past five years. Driven by rapid smartphone penetration, cheap high-speed data, and the groundbreaking Unified Payments Interface (UPI) developed by the NPCI, India has emerged as a global leader in retail digital transactions. However, this sudden paradigm shift presents dual challenges: cybersecurity vulnerabilities and financial exclusion among non-tech-savvy rural demographics. While commercial banks are heavily investing in AI-driven fraud detection systems, regulators emphasize that customer awareness and robust compliance frameworks are equally crucial to maintaining systemic stability. Furthermore, the introduction of Central Bank Digital Currency (CBDC) by the Reserve Bank of India aims to streamline cross-border payments and reduce cash printing costs, marking the next frontier in monetary innovation.
+
+Q1. Which of the following best expresses the primary objective of the passage?
+(A) To analyze the rapid growth, challenges, and future innovations in Indian digital banking
+(B) To criticize commercial banks for failing to prevent online fraud
+(C) To argue that physical currency should be completely abolished immediately
+(D) To compare Indian banking growth with European banking models
+(E) To advocate for higher transaction fees on UPI payments
+Correct Option: A
+Explanation: Paragraph 1 outlines growth, paragraph 2 addresses challenges like cybersecurity, and paragraph 3 highlights CBDC innovations.
+
+Q2. According to the passage, what dual challenges accompany India's digital banking surge?
+(A) High inflation and declining interest rates
+(B) Cybersecurity vulnerabilities and financial exclusion in rural areas
+(C) Shortage of bank branches and lack of currency notes
+(D) Strict regulatory fines and falling credit demand
+(E) None of the above
+Correct Option: B
+Explanation: The passage explicitly states dual challenges of cybersecurity vulnerabilities and financial exclusion among non-tech-savvy rural demographics.
+
+Q3. Which factor did NOT directly contribute to the rapid growth of retail digital transactions in India?
+(A) Smartphone penetration
+(B) Affordable high-speed internet data
+(C) Unified Payments Interface (UPI)
+(D) Mandatory closure of physical bank branches
+(E) NPCI payment infrastructure
+Correct Option: D
+Explanation: Mandatory closure of physical branches is nowhere mentioned as a driver.
+
+Q4. Choose the word MOST SIMILAR in meaning to "PARADIGM" as highlighted in the passage.
+(A) Pattern / Framework
+(B) Anomaly
+(C) Stagnation
+(D) Obstacle
+(E) Misconception
+Correct Option: A
+Explanation: Paradigm shift refers to a fundamental change in pattern or underlying model.
+
+Q5. Choose the word MOST OPPOSITE in meaning to "VULNERABILITIES" as highlighted in the passage.
+(A) Defenses / Strengths
+(B) Weaknesses
+(C) Liabilities
+(D) Risks
+(E) Exposure
+Correct Option: A
+Explanation: Vulnerabilities means state of being exposed to harm; opposite is Defenses or Strengths.
+
+Q6. What measures are commercial banks implementing to counter fraud according to the text?
+(A) AI-driven fraud detection systems
+(B) Manual auditing of all cash withdrawals
+(C) Hiring international security guards
+(D) Discontinuing debit cards
+(E) Reducing online transfer limits to zero
+Correct Option: A
+Explanation: Text explicitly mentions investment in AI-driven fraud detection systems.
+
+Q7. What potential benefit of Central Bank Digital Currency (CBDC) is highlighted by the author?
+(A) Streamlining cross-border payments and reducing cash printing costs
+(B) Eliminating commercial banks entirely
+(C) Doubling interest rates on savings accounts
+(D) Making gold investments obsolete
+(E) None of these
+Correct Option: A
+Explanation: Text states CBDC aims to streamline cross-border payments and reduce cash printing costs.
+
+Q8. What role do regulators emphasize alongside technological investments?
+(A) Customer awareness and robust compliance frameworks
+(B) Increasing bank executive salaries
+(C) Outsourcing security to foreign nations
+(D) Banning third-party payment apps
+(E) Converting all accounts into credit accounts
+Correct Option: A
+Explanation: Regulators emphasize customer awareness and robust compliance frameworks.
+
+Q9. Which of the following can be inferred regarding rural demographics in India?
+(A) They face financial exclusion due to lack of digital literacy and technology familiarity
+(B) They have achieved 100% digital banking adoption ahead of urban areas
+(C) They prefer cross-border CBDC payments
+(D) They do not use bank accounts at all
+(E) They are unconcerned with financial security
+Correct Option: A
+Explanation: Inferred from financial exclusion among non-tech-savvy rural demographics.
+
+Q10. What is the overall tone of the author regarding India's banking transformation?
+(A) Analytical and Constructive
+(B) Dismissive and Hostile
+(C) Sarcastic and Cynical
+(D) Pessimistic
+(E) Indifferent
+Correct Option: A
+Explanation: The author objectively analyzes growth while constructively highlighting challenges.
+
+Q11. Read the sentence to find whether there is any grammatical error in it:
+"Neither the Reserve Bank governor (A) / nor the board of directors (B) / were aware about (C) / the sudden policy change. (D) / No Error (E)"
+(A) Neither the Reserve Bank governor
+(B) nor the board of directors
+(C) were aware about
+(D) the sudden policy change
+(E) No Error
+Correct Option: C
+Explanation: Error in Part C: "aware" takes the preposition "of" (aware of), not "about".
+
+Q12. Read the sentence to find whether there is any grammatical error in it:
+"Scarcely had the manager (A) / entered the conference room (B) / than the board members (C) / started questioning him. (D) / No Error (E)"
+(A) Scarcely had the manager
+(B) entered the conference room
+(C) than the board members
+(D) started questioning him
+(E) No Error
+Correct Option: C
+Explanation: Error in Part C: "Scarcely" is followed by "when", not "than".
+
+Q13. Read the sentence to find whether there is any grammatical error in it:
+"The new compliance measures (A) / introduced by the bank (B) / is expected to reduce (C) / fraudulent transactions significantly. (D) / No Error (E)"
+(A) The new compliance measures
+(B) introduced by the bank
+(C) is expected to reduce
+(D) fraudulent transactions significantly
+(E) No Error
+Correct Option: C
+Explanation: Error in Part C: Plural subject "measures" requires plural verb "are expected".
+
+Q14. Read the sentence to find whether there is any grammatical error in it:
+"Had the loan applicant (A) / submitted all required proof of income (B) / on time, the manager (C) / would approve the request. (D) / No Error (E)"
+(A) Had the loan applicant
+(B) submitted all required proof of income
+(C) on time, the manager
+(D) would approve the request
+(E) No Error
+Correct Option: D
+Explanation: Error in Part D: "Had + V3" requires "would have + V3" (would have approved).
+
+Q15. Read the sentence to find whether there is any grammatical error in it:
+"One of the most crucial factor (A) / in determining creditworthiness (B) / is the consistency (C) / of monthly repayment history. (D) / No Error (E)"
+(A) One of the most crucial factor
+(B) in determining creditworthiness
+(C) is the consistency
+(D) of monthly repayment history
+(E) No Error
+Correct Option: A
+Explanation: Error in Part A: "One of the" requires plural noun ("factors").
+
+Q16. Read the sentence to find whether there is any grammatical error in it:
+"The committee members (A) / discussed about the proposal (B) / for over three hours (C) / before reaching a consensus. (D) / No Error (E)"
+(A) The committee members
+(B) discussed about the proposal
+(C) for over three hours
+(D) before reaching a consensus
+(E) No Error
+Correct Option: B
+Explanation: Error in Part B: "Discuss" takes a direct object without preposition "about".
+
+Q17. Read the sentence to find whether there is any grammatical error in it:
+"Not only the chief executive (A) / but also the department heads (B) / was held responsible (C) / for the audit failure. (D) / No Error (E)"
+(A) Not only the chief executive
+(B) but also the department heads
+(C) was held responsible
+(D) for the audit failure
+(E) No Error
+Correct Option: C
+Explanation: Error in Part C: Verb agrees with closer subject "department heads" -> "were held".
+
+=========
+[Q18 to Q30 detailed in complete source file]
+=========
+
+====================================================================
+SECTION 2: QUANTITATIVE APTITUDE (35 QUESTIONS: Q31 - Q65)
+====================================================================
+
+[Directions Q31-Q35]: Study the table showing applicants and selected candidate percentages in 5 Public Sector Banks in 2025:
+- SBI: 120,000 Total Applicants | 5% Selected
+- PNB: 80,000 Total Applicants | 4% Selected
+- BOB: 90,000 Total Applicants | 6% Selected
+- CANARA: 60,000 Total Applicants | 5% Selected
+- UNION: 50,000 Total Applicants | 8% Selected
+
+Q31. What is the total number of selected candidates in SBI and BOB together?
+(A) 11,400
+(B) 12,000
+(C) 10,800
+(D) 11,200
+(E) 11,800
+Correct Option: A
+Explanation: SBI selected = 120,000 * 5% = 6,000. BOB selected = 90,000 * 6% = 5,400. Total = 11,400.
+
+Q32. Find the ratio of selected candidates in PNB to CANARA.
+(A) 16 : 15
+(B) 15 : 16
+(C) 4 : 3
+(D) 3 : 4
+(E) 5 : 4
+Correct Option: A
+Explanation: PNB selected = 80,000 * 4% = 3,200. CANARA selected = 60,000 * 5% = 3,000. Ratio = 3200 : 3000 = 16 : 15.
+
+Q33. Total applicants in UNION Bank is what percentage less than total applicants in PNB?
+(A) 37.5%
+(B) 40.0%
+(C) 35.0%
+(D) 30.0%
+(E) 42.5%
+Correct Option: A
+Explanation: Difference = 80,000 - 50,000 = 30,000. Percentage less = (30,000 / 80,000) * 100 = 37.5%.
+
+Q34. If 45% of selected candidates in SBI are female, find the number of male candidates selected in SBI.
+(A) 3,300
+(B) 2,700
+(C) 3,600
+(D) 3,100
+(E) 3,450
+Correct Option: A
+Explanation: SBI total selected = 6,000. Male selected = 55% of 6,000 = 3,300.
+
+Q35. Find the average number of selected candidates across all 5 banks.
+(A) 3,920
+(B) 4,000
+(C) 3,850
+(D) 4,100
+(E) 3,750
+Correct Option: A
+Explanation: Selected sum = 6000 + 3200 + 5400 + 3000 + 4000 = 19,600. Avg = 19,600 / 5 = 3,920.
+
+Q41. Solve equations and establish relation between x and y:
+I. x² - 13x + 40 = 0
+II. y² - 17y + 70 = 0
+(A) x > y
+(B) x < y
+(C) x ≥ y
+(D) x ≤ y
+(E) x = y or relation cannot be established
+Correct Option: E
+Explanation: x = 5, 8. y = 7, 10. Since 5 < 7 and 8 > 7, relation cannot be established.
+
+Q46. What should come in place of question mark (?) in the series: 12, 18, 36, 90, 270, ?
+(A) 945
+(B) 810
+(C) 1080
+(D) 720
+(E) 990
+Correct Option: A
+Explanation: Pattern: ×1.5, ×2.0, ×2.5, ×3.0, ×3.5. Next: 270 × 3.5 = 945.
+
+====================================================================
+SECTION 3: REASONING ABILITY (35 QUESTIONS: Q66 - Q100)
+====================================================================
+
+[Directions Q66-Q70]: 8 persons (A, B, C, D, E, F, G, H) live on an 8-story building numbered 1 to 8 from bottom to top:
+- A lives on an even numbered floor above floor 4.
+- Only 3 persons live between A and B.
+- C lives immediately below B.
+- E lives on an odd numbered floor below C.
+- Two persons live between E and F.
+- H lives above G but below D.
+
+Q66. Who among the following lives on the 8th floor?
+(A) A
+(B) D
+(C) H
+(D) F
+(E) E
+Correct Option: A
+Explanation: Floor arrangement: Floor 8: A, Floor 7: D, Floor 6: H, Floor 5: G, Floor 4: B, Floor 3: C, Floor 2: F, Floor 1: E.
+
+Q67. How many persons live between A and C?
+(A) 4
+(B) 3
+(C) 2
+(D) 1
+(E) 5
+Correct Option: A
+Explanation: A is on floor 8, C on floor 3. Between them are floors 7, 6, 5, 4 (4 persons: D, H, G, B).
+
+Q86. Statements:
+Only a few Bank are PO.
+All PO are Exam.
+No Exam is Easy.
+
+Conclusions:
+I. Some Bank can never be Easy.
+II. All PO being Bank is a possibility.
+(A) Only conclusion I follows
+(B) Only conclusion II follows
+(C) Either conclusion I or II follows
+(D) Neither conclusion I nor II follows
+(E) Both conclusions I and II follow
+Correct Option: E
+Explanation: C1 follows (Bank portion in PO is inside Exam, not Easy). C2 follows (Only a few Bank are PO allows all PO to be Bank). Both follow.
+
+Q93. Statements: M ≥ N > O = P ≤ Q < R
+Conclusions:
+I. M > P
+II. R > O
+(A) Only conclusion I follows
+(B) Only conclusion II follows
+(C) Either conclusion I or II follows
+(D) Neither conclusion I nor II follows
+(E) Both conclusions I and II follow
+Correct Option: E
+Explanation: M > P holds from M ≥ N > O = P. R > O holds from O = P ≤ Q < R. Both follow.
