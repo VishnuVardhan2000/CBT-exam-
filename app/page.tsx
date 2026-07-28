@@ -12,7 +12,7 @@ export default function Home() {
 
   const handleStartAsCandidate = () => {
     switchRole('candidate');
-    router.push('/candidate/dashboard');
+    router.push('/dashboard');
   };
 
   const handleStartAsAdmin = () => {

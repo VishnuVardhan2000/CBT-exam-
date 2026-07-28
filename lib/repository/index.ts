@@ -282,11 +282,7 @@ export function getCandidateAnalytics(candidateId: string): CandidateProgressSna
         'Quantitative Aptitude': { totalAttempted: 0, totalCorrect: 0, accuracy: 0, avgScore: 0 },
         'Reasoning Ability': { totalAttempted: 0, totalCorrect: 0, accuracy: 0, avgScore: 0 }
       },
-      weaknessAreas: [
-        { subject: 'English Language', topic: 'Reading Comprehension', wrongCount: 0, accuracy: 0 },
-        { subject: 'Quantitative Aptitude', topic: 'Data Interpretation', wrongCount: 0, accuracy: 0 },
-        { subject: 'Reasoning Ability', topic: 'Floor & Box Puzzles', wrongCount: 0, accuracy: 0 }
-      ],
+      weaknessAreas: [],
       recentAttempts: []
     };
   }
@@ -339,6 +335,16 @@ export function getCandidateAnalytics(candidateId: string): CandidateProgressSna
     accuracy: a.accuracyRate
   }));
 
+  // Derive real weakness topics dynamically from wrong answers in attempts
+  const weaknessAreas = (Object.keys(subjectPerformance) as SubjectName[])
+    .filter(subj => subjectPerformance[subj].totalAttempted > 0 && subjectPerformance[subj].accuracy < 70)
+    .map(subj => ({
+      subject: subj,
+      topic: subj === 'English Language' ? 'Grammatical Accuracy & RC' : subj === 'Quantitative Aptitude' ? 'Data Interpretation & Speed Math' : 'Arrangement & Puzzles',
+      wrongCount: attempts.reduce((acc, a) => acc + (a.sectionScores?.[subj]?.wrong || 0), 0),
+      accuracy: subjectPerformance[subj].accuracy
+    }));
+
   return {
     candidateId,
     totalTestsAttempted: attempts.length,
@@ -346,11 +352,7 @@ export function getCandidateAnalytics(candidateId: string): CandidateProgressSna
     highestScore,
     overallAccuracy,
     subjectPerformance,
-    weaknessAreas: [
-      { subject: 'English Language', topic: 'Reading Comprehension', wrongCount: 4, accuracy: 60.0 },
-      { subject: 'Quantitative Aptitude', topic: 'Arithmetic Word Problems', wrongCount: 6, accuracy: 45.0 },
-      { subject: 'Reasoning Ability', topic: 'Seating Arrangement Puzzles', wrongCount: 5, accuracy: 50.0 }
-    ],
+    weaknessAreas,
     recentAttempts
   };
 }

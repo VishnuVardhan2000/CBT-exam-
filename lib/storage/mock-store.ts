@@ -574,7 +574,7 @@ export const MOCK_USERS: UserProfile[] = [
   {
     id: 'usr_candidate_1',
     email: 'candidate@mockcbt.com',
-    fullName: 'Vardhan Doharey (SBI PO Aspirant)',
+    fullName: 'SBI PO Candidate',
     role: 'candidate',
     targetYear: 2026,
     createdAt: '2026-01-02T00:00:00Z'

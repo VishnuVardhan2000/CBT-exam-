@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import { Shield, User, LogOut, BookOpen, BarChart3, FileText, CheckCircle2, RefreshCw } from 'lucide-react';
-import { getActiveUser, switchRole } from '@/lib/auth/store';
+import { Shield, User, LogOut, BookOpen, BarChart3, FileText, CheckCircle2, RefreshCw, Award, Layers } from 'lucide-react';
+import { getActiveUser, switchRole, logoutUser } from '@/lib/auth/store';
 import { UserProfile, UserRole } from '@/types';
 
 export default function Navbar() {
@@ -22,12 +22,18 @@ export default function Navbar() {
     if (role === 'admin') {
       router.push('/admin/dashboard');
     } else {
-      router.push('/candidate/dashboard');
+      router.push('/dashboard');
     }
   };
 
-  // Do not show full navbar during candidate active CBT exam to maintain distraction-free interface
-  if (pathname.includes('/candidate/test/')) {
+  const handleSignOut = () => {
+    logoutUser();
+    setCurrentUser(null);
+    router.push('/login');
+  };
+
+  // Do not show full navbar during active CBT exam session to maintain distraction-free interface
+  if (pathname.includes('/attempts/') || pathname.includes('/candidate/test/')) {
     return null;
   }
 
@@ -60,59 +66,75 @@ export default function Navbar() {
                 <>
                   <Link
                     href="/admin/dashboard"
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition ${
-                      pathname === '/admin/dashboard' ? 'bg-blue-600/20 text-blue-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                      pathname === '/admin/dashboard' ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
-                    Dashboard
+                    Admin Operations
                   </Link>
                   <Link
                     href="/admin/sources"
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition ${
-                      pathname === '/admin/sources' ? 'bg-blue-600/20 text-blue-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                      pathname.startsWith('/admin/sources') ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
                     PDF Ingestion
                   </Link>
                   <Link
                     href="/admin/questions"
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition ${
-                      pathname === '/admin/questions' ? 'bg-blue-600/20 text-blue-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                      pathname.startsWith('/admin/questions') ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
                     Question Bank
                   </Link>
                   <Link
                     href="/admin/tests"
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition ${
-                      pathname === '/admin/tests' ? 'bg-blue-600/20 text-blue-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                      pathname.startsWith('/admin/tests') ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
-                    Manage Tests
+                    Test Builder
                   </Link>
                   <Link
                     href="/admin/candidates"
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition ${
-                      pathname === '/admin/candidates' ? 'bg-blue-600/20 text-blue-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                      pathname.startsWith('/admin/candidates') ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
-                    Candidates
+                    Candidate Directory
                   </Link>
                 </>
               ) : (
                 <>
                   <Link
-                    href="/candidate/dashboard"
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition ${
-                      pathname === '/candidate/dashboard' ? 'bg-blue-600/20 text-blue-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    href="/dashboard"
+                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                      pathname === '/dashboard' || pathname === '/candidate/dashboard' ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
-                    My Tests
+                    Dashboard
                   </Link>
                   <Link
-                    href="/candidate/progress"
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition ${
-                      pathname === '/candidate/progress' ? 'bg-blue-600/20 text-blue-400 font-semibold' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    href="/tests"
+                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                      pathname.startsWith('/tests') ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    }`}
+                  >
+                    Mock Tests
+                  </Link>
+                  <Link
+                    href="/results"
+                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                      pathname.startsWith('/results') ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    }`}
+                  >
+                    Scorecards
+                  </Link>
+                  <Link
+                    href="/performance"
+                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                      pathname === '/performance' || pathname === '/candidate/progress' ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
                     Growth Analytics
@@ -122,7 +144,7 @@ export default function Navbar() {
             </nav>
           )}
 
-          {/* Quick Role Switcher & User Profile */}
+          {/* User Profile & Actions */}
           <div className="flex items-center space-x-3">
             {currentUser && (
               <div className="bg-slate-800/80 border border-slate-700 p-1 rounded-xl flex items-center">
@@ -155,24 +177,23 @@ export default function Navbar() {
             {!currentUser ? (
               <Link
                 href="/login"
-                className="px-4 py-2 text-sm font-semibold bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition"
+                className="px-4 py-2 text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition shadow-lg shadow-blue-600/20"
               >
                 Sign In
               </Link>
             ) : (
-              <div className="flex items-center space-x-2 border-l border-slate-800 pl-3">
+              <div className="flex items-center space-x-3 border-l border-slate-800 pl-3">
                 <div className="hidden sm:flex flex-col text-right">
-                  <span className="text-xs font-semibold text-slate-200">{currentUser.fullName}</span>
-                  <span className="text-[10px] text-slate-400 capitalize">{currentUser.role} Mode</span>
+                  <span className="text-xs font-bold text-slate-200">{currentUser.fullName || 'Candidate'}</span>
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase">{currentUser.role} Mode</span>
                 </div>
                 <button
-                  onClick={() => {
-                    router.push('/login');
-                  }}
+                  onClick={handleSignOut}
                   title="Sign Out"
-                  className="p-2 text-slate-400 hover:text-red-400 hover:bg-slate-800 rounded-lg transition"
+                  className="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-red-400 rounded-xl transition text-xs font-semibold flex items-center space-x-1"
                 >
-                  <LogOut className="w-4 h-4" />
+                  <LogOut className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Sign Out</span>
                 </button>
               </div>
             )}
