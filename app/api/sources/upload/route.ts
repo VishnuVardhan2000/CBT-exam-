@@ -2,7 +2,27 @@ import { NextRequest, NextResponse } from 'next/server';
 import { parseQuestionsFromRawText } from '@/lib/pdf/parser';
 import { addQuestionSource } from '@/lib/repository';
 
+function checkAdminAccess(req: NextRequest) {
+  const authUserCookie = req.cookies.get('sbi_cbt_user');
+  if (!authUserCookie) {
+    return { valid: false, status: 401, error: 'Unauthorized' };
+  }
+  try {
+    const user = JSON.parse(decodeURIComponent(authUserCookie.value));
+    if (user.role !== 'admin') {
+      return { valid: false, status: 403, error: 'Forbidden' };
+    }
+    return { valid: true, user };
+  } catch (e) {
+    return { valid: false, status: 401, error: 'Unauthorized' };
+  }
+}
+
 export async function POST(req: NextRequest) {
+  const auth = checkAdminAccess(req);
+  if (!auth.valid) {
+    return NextResponse.json({ success: false, error: auth.error }, { status: auth.status });
+  }
   try {
     const formData = await req.formData();
     const file = formData.get('file') as File | null;

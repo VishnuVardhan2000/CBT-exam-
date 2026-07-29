@@ -6,8 +6,28 @@ import { addQuestionSource } from '@/lib/repository';
 
 const LOCAL_PDF_DIR = path.join(process.cwd(), 'source-files', 'pdfs');
 
+function checkAdminAccess(req: NextRequest) {
+  const authUserCookie = req.cookies.get('sbi_cbt_user');
+  if (!authUserCookie) {
+    return { valid: false, status: 401, error: 'Unauthorized' };
+  }
+  try {
+    const user = JSON.parse(decodeURIComponent(authUserCookie.value));
+    if (user.role !== 'admin') {
+      return { valid: false, status: 403, error: 'Forbidden' };
+    }
+    return { valid: true, user };
+  } catch (e) {
+    return { valid: false, status: 401, error: 'Unauthorized' };
+  }
+}
+
 // GET: List all PDF/source files in local workspace folder /source-files/pdfs
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const auth = checkAdminAccess(req);
+  if (!auth.valid) {
+    return NextResponse.json({ success: false, error: auth.error }, { status: auth.status });
+  }
   try {
     if (!fs.existsSync(LOCAL_PDF_DIR)) {
       try {
@@ -49,6 +69,10 @@ export async function GET() {
 
 // POST: Ingest selected local file from /source-files/pdfs
 export async function POST(req: NextRequest) {
+  const auth = checkAdminAccess(req);
+  if (!auth.valid) {
+    return NextResponse.json({ success: false, error: auth.error }, { status: auth.status });
+  }
   try {
     const { fileName, title } = await req.json();
 
