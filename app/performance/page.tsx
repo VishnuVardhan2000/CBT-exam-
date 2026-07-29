@@ -16,9 +16,8 @@ export default function CandidatePerformancePage() {
       setAnalytics(getCandidateAnalytics(user.id));
     }
   }, []);
-
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fade-in">
       
       <div>
         <Link href="/dashboard" className="text-xs text-blue-400 font-semibold flex items-center space-x-1 mb-2 hover:underline">
@@ -34,19 +33,19 @@ export default function CandidatePerformancePage() {
       {/* METRICS GRID */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-1">
+        <div className="stitch-card hover-lift p-5 rounded-2xl space-y-1">
           <span className="text-xs font-semibold text-slate-400">Total Mock Tests</span>
           <div className="text-3xl font-extrabold text-white">{analytics?.totalTestsAttempted || 0}</div>
           <span className="text-[11px] text-blue-400">Prelims Stage</span>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-1">
+        <div className="stitch-card hover-lift p-5 rounded-2xl space-y-1">
           <span className="text-xs font-semibold text-slate-400">Average Score</span>
           <div className="text-3xl font-extrabold text-emerald-400">{analytics?.averageScore || '0.00'}</div>
           <span className="text-[11px] text-slate-400">Out of 100 Marks</span>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-1">
+        <div className="stitch-card hover-lift p-5 rounded-2xl space-y-1">
           <span className="text-xs font-semibold text-slate-400">Highest Score</span>
           <div className="text-3xl font-extrabold text-purple-400">{analytics?.highestScore || '0.00'}</div>
           <span className="text-[11px] text-purple-400">Personal Best</span>

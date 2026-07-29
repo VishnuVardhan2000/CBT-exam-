@@ -22,7 +22,7 @@ export default function TestsCatalogPage() {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fade-in">
       
       <div>
         <h1 className="text-2xl font-extrabold text-white">SBI PO Preliminary Published Mock Tests</h1>
@@ -36,7 +36,7 @@ export default function TestsCatalogPage() {
           const attempt = attempts.find(a => a.testId === test.id);
 
           return (
-            <div key={test.id} className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-5 shadow-xl hover:border-slate-700 transition">
+            <div key={test.id} className="stitch-card hover-lift rounded-2xl p-6 space-y-5 shadow-xl">
               
               <div className="flex items-center justify-between">
                 <span className="px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30 text-[10px] font-bold">

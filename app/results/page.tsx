@@ -19,9 +19,8 @@ export default function ResultsHistoryPage() {
       setAttempts([]);
     }
   }, []);
-
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fade-in">
       
       <div>
         <h1 className="text-2xl font-extrabold text-white">Exam Results & Scorecard History</h1>
@@ -30,7 +29,7 @@ export default function ResultsHistoryPage() {
         </p>
       </div>
 
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+      <div className="stitch-card rounded-2xl p-6 shadow-xl space-y-4">
         <h2 className="text-base font-bold text-white flex items-center space-x-2">
           <Award className="w-5 h-5 text-purple-400" />
           <span>Completed Test Scorecards ({attempts.length})</span>

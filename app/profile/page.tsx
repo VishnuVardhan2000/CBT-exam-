@@ -25,7 +25,7 @@ export default function CandidateProfilePage() {
   const roleLabel = 'candidate'; // Force candidate display label on candidate-facing routes
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fade-in">
       
       <div>
         <Link href="/dashboard" className="text-xs text-blue-400 font-semibold flex items-center space-x-1 mb-2 hover:underline">
@@ -39,7 +39,7 @@ export default function CandidateProfilePage() {
       </div>
 
       {/* PROFILE INFO CARD */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+      <div className="stitch-card rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
         
         <div className="flex items-center space-x-4 border-b border-slate-800 pb-6">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 border border-blue-500/40 text-white font-extrabold text-2xl flex items-center justify-center shadow-lg">

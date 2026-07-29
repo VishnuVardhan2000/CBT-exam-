@@ -32,10 +32,10 @@ export default function CandidateDashboardPage() {
   const displayYear = isUserAdmin ? 2026 : (currentUser?.targetYear || 2026);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fade-in">
       
       {/* Welcome Card */}
-      <div className="bg-gradient-to-r from-blue-900/40 via-slate-900 to-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl">
+      <div className="bg-gradient-to-r from-blue-950/40 via-slate-900 to-slate-900 border border-slate-800/80 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl animate-glow-pulse">
         <div className="space-y-2">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold">
             <Target className="w-3.5 h-3.5" />
@@ -50,7 +50,7 @@ export default function CandidateDashboardPage() {
         <div className="flex items-center space-x-3 shrink-0">
           <Link
             href="/tests"
-            className="px-5 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-extrabold rounded-xl transition shadow-lg shadow-blue-600/20 flex items-center space-x-2"
+            className="px-5 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-extrabold rounded-xl transition shadow-lg shadow-blue-600/20 flex items-center space-x-2 hover-lift"
           >
             <Play className="w-4 h-4 fill-current" />
             <span>Explore Mock Tests</span>
@@ -61,13 +61,13 @@ export default function CandidateDashboardPage() {
       {/* METRICS CARDS */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-1">
+        <div className="stitch-card hover-lift p-5 rounded-2xl space-y-1">
           <span className="text-xs font-semibold text-slate-400">Total Attempts</span>
           <div className="text-3xl font-extrabold text-white">{analytics?.totalTestsAttempted || 0}</div>
           <span className="text-[11px] text-blue-400">SBI PO Prelims Standard</span>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-1">
+        <div className="stitch-card hover-lift p-5 rounded-2xl space-y-1">
           <span className="text-xs font-semibold text-slate-400">Latest Score</span>
           <div className="text-3xl font-extrabold text-blue-400">
             {latestAttempt ? `${latestAttempt.totalScore}` : '0.00'}
@@ -75,13 +75,13 @@ export default function CandidateDashboardPage() {
           <span className="text-[11px] text-slate-400">Out of 100 Marks</span>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-1">
+        <div className="stitch-card hover-lift p-5 rounded-2xl space-y-1">
           <span className="text-xs font-semibold text-slate-400">Best Score</span>
           <div className="text-3xl font-extrabold text-purple-400">{analytics?.highestScore || '0.00'}</div>
           <span className="text-[11px] text-purple-400">Personal Best</span>
         </div>
 
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-1">
+        <div className="stitch-card hover-lift p-5 rounded-2xl space-y-1">
           <span className="text-xs font-semibold text-slate-400">Average Accuracy</span>
           <div className="text-3xl font-extrabold text-amber-400">{analytics?.overallAccuracy || 0}%</div>
           <span className="text-[11px] text-amber-400">Correct vs Attempted</span>

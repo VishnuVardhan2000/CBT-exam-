@@ -45,6 +45,21 @@ export default function CbtExamEngine({ test }: CbtExamEngineProps) {
 
   // Mount/load safety toggle
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [isOnline, setIsOnline] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsOnline(window.navigator.onLine);
+      const onlineHandler = () => setIsOnline(true);
+      const offlineHandler = () => setIsOnline(false);
+      window.addEventListener('online', onlineHandler);
+      window.addEventListener('offline', offlineHandler);
+      return () => {
+        window.removeEventListener('online', onlineHandler);
+        window.removeEventListener('offline', offlineHandler);
+      };
+    }
+  }, []);
 
   const attemptIdRef = useRef<string>(`attempt_${Date.now()}`);
   const startedAtRef = useRef<string>(new Date().toISOString());
@@ -268,8 +283,16 @@ export default function CbtExamEngine({ test }: CbtExamEngineProps) {
   const sectionSkippedCount = sectionQuestions.length - sectionAnsweredLockedCount;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans select-none">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans select-none animate-fade-in">
       
+      {/* Offline Status Warning banner */}
+      {!isOnline && (
+        <div className="offline-banner text-center py-2 animate-pulse flex items-center justify-center space-x-2 shrink-0">
+          <AlertTriangle className="w-4 h-4 text-red-200" />
+          <span>Offline Mode. Answers are safely cached in browser storage. Attempt progress will sync when connection returns.</span>
+        </div>
+      )}
+
       {/* 1. TOP TIMER & CBT HEADER */}
       <header className="bg-slate-900/90 border-b border-slate-800/80 backdrop-blur-md px-6 py-4 sticky top-0 z-30 shadow-lg">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
