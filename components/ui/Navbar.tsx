@@ -38,6 +38,10 @@ export default function Navbar() {
   }
 
   const isAdminRoute = pathname.startsWith('/admin');
+  const isUserAdmin = currentUser?.role === 'admin';
+  const displayName = isAdminRoute 
+    ? (currentUser?.fullName || 'Exam Admin') 
+    : (isUserAdmin ? 'Candidate' : (currentUser?.fullName || 'Candidate'));
 
   return (
     <header className="sticky top-0 z-40 bg-slate-900 border-b border-slate-800 text-white shadow-lg">
@@ -185,25 +189,28 @@ export default function Navbar() {
                 Sign In
               </Link>
             ) : (
-              <div className="flex items-center space-x-4 border-l border-slate-800 pl-4">
-                <div className="hidden sm:flex flex-col text-right">
-                  <span className="text-xs font-bold text-slate-200">
-                    {/* Render neutral 'Candidate' identity on candidate pages even if user role is admin */}
-                    {isAdminRoute ? (currentUser.fullName || 'Exam Admin') : (currentUser.role === 'admin' ? 'Candidate' : (currentUser.fullName || 'Candidate'))}
+              <div className="flex items-center space-x-3 border-l border-slate-800 pl-3">
+                <div className="flex items-center space-x-2 bg-slate-950/40 border border-slate-800/60 px-3 py-1.5 rounded-xl shadow-inner">
+                  <div className="w-6 h-6 rounded-lg bg-blue-600/10 border border-blue-500/30 text-blue-400 flex items-center justify-center text-xs font-bold shrink-0">
+                    {displayName.charAt(0).toUpperCase()}
+                  </div>
+                  <span className="text-xs font-bold text-slate-200 tracking-tight select-none">
+                    {displayName}
                   </span>
                   {isAdminRoute && (
-                    <span className="text-[10px] text-purple-400 font-extrabold uppercase tracking-wider mt-0.5">
+                    <span className="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-[9px] font-extrabold uppercase text-purple-400">
                       Admin Mode
                     </span>
                   )}
                 </div>
+
                 <button
                   onClick={handleSignOut}
                   title="Sign Out"
-                  className="px-3.5 py-2 bg-slate-850 hover:bg-slate-800 border border-slate-800 hover:text-red-400 rounded-xl transition-all text-xs font-bold flex items-center space-x-2 shadow-sm"
+                  className="px-3.5 py-2 bg-slate-850 hover:bg-slate-800 border border-slate-800 hover:text-red-400 rounded-xl transition-all text-xs font-bold flex items-center space-x-1.5 shadow-sm shrink-0"
                 >
                   <LogOut className="w-3.5 h-3.5 text-slate-400" />
-                  <span className="hidden sm:inline">Sign Out</span>
+                  <span>Sign Out</span>
                 </button>
               </div>
             )}
