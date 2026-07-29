@@ -189,12 +189,12 @@ export default function Navbar() {
                 Sign In
               </Link>
             ) : (
-              <div className="flex items-center space-x-3 border-l border-slate-800 pl-3">
-                <div className="flex items-center space-x-2 bg-slate-950/40 border border-slate-800/60 px-3 py-1.5 rounded-xl shadow-inner">
-                  <div className="w-6 h-6 rounded-lg bg-blue-600/10 border border-blue-500/30 text-blue-400 flex items-center justify-center text-xs font-bold shrink-0">
+              <div className="flex items-center space-x-3.5 border-l border-slate-800 pl-3.5">
+                <div className="flex items-center space-x-2 bg-slate-950/40 border border-slate-800/60 px-3 py-1.5 rounded-xl shadow-inner shrink-0">
+                  <div className="w-6 h-6 rounded-lg bg-blue-600/10 border border-blue-500/30 text-blue-400 flex items-center justify-center text-xs font-bold shrink-0 select-none">
                     {displayName.charAt(0).toUpperCase()}
                   </div>
-                  <span className="text-xs font-bold text-slate-200 tracking-tight select-none">
+                  <span className="hidden sm:inline text-xs font-bold text-slate-200 tracking-tight select-none">
                     {displayName}
                   </span>
                   {isAdminRoute && (
@@ -203,6 +203,8 @@ export default function Navbar() {
                     </span>
                   )}
                 </div>
+
+                <div className="hidden sm:block w-px h-4 bg-slate-800/80" />
 
                 <button
                   onClick={handleSignOut}
