@@ -27,7 +27,9 @@ export default function CandidateDashboardPage() {
   }, []);
 
   const latestAttempt = recentAttempts[0];
-  const greetingName = currentUser?.fullName || 'Candidate';
+  const isUserAdmin = currentUser?.role === 'admin';
+  const greetingName = isUserAdmin ? 'Candidate' : (currentUser?.fullName || 'Candidate');
+  const displayYear = isUserAdmin ? 2026 : (currentUser?.targetYear || 2026);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
@@ -37,7 +39,7 @@ export default function CandidateDashboardPage() {
         <div className="space-y-2">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold">
             <Target className="w-3.5 h-3.5" />
-            <span>Target: SBI PO Preliminary {currentUser?.targetYear || 2026}</span>
+            <span>Target: SBI PO Preliminary {displayYear}</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white">Welcome back, {greetingName}!</h1>
           <p className="text-xs sm:text-sm text-slate-400 max-w-xl leading-relaxed">

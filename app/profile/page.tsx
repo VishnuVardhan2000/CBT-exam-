@@ -19,9 +19,10 @@ export default function CandidateProfilePage() {
     }
   }, []);
 
-  const displayName = currentUser?.fullName || 'Candidate Profile';
-  const displayEmail = currentUser?.email || 'No email registered';
-  const roleLabel = currentUser?.role || 'candidate';
+  const isUserAdmin = currentUser?.role === 'admin';
+  const displayName = isUserAdmin ? 'Candidate' : (currentUser?.fullName || 'Candidate Profile');
+  const displayEmail = isUserAdmin ? 'No email registered' : (currentUser?.email || 'No email registered');
+  const roleLabel = 'candidate'; // Force candidate display label on candidate-facing routes
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">

@@ -1,6 +1,7 @@
 import { UserProfile, UserRole } from '@/types';
 
 const AUTH_STORAGE_KEY = 'sbi_mock_cbt_user';
+const AUTH_COOKIE_KEY = 'sbi_cbt_user';
 
 export function getActiveUser(): UserProfile | null {
   if (typeof window === 'undefined') return null;
@@ -20,6 +21,8 @@ export function getActiveUser(): UserProfile | null {
 export function setActiveUser(user: UserProfile): void {
   if (typeof window !== 'undefined') {
     localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(user));
+    // Set cookie for middleware validation
+    document.cookie = `${AUTH_COOKIE_KEY}=${encodeURIComponent(JSON.stringify(user))}; path=/; max-age=86400; SameSite=Lax`;
   }
 }
 
@@ -48,5 +51,7 @@ export function switchRole(role: UserRole): UserProfile {
 export function logoutUser(): void {
   if (typeof window !== 'undefined') {
     localStorage.removeItem(AUTH_STORAGE_KEY);
+    // Clear cookie
+    document.cookie = `${AUTH_COOKIE_KEY}=; path=/; max-age=0; SameSite=Lax`;
   }
 }

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import { Shield, User, LogOut, BookOpen, BarChart3, FileText, CheckCircle2, RefreshCw, Award, Layers } from 'lucide-react';
+import { Shield, User, LogOut } from 'lucide-react';
 import { getActiveUser, switchRole, logoutUser } from '@/lib/auth/store';
 import { UserProfile, UserRole } from '@/types';
 
@@ -37,6 +37,8 @@ export default function Navbar() {
     return null;
   }
 
+  const isAdminRoute = pathname.startsWith('/admin');
+
   return (
     <header className="sticky top-0 z-40 bg-slate-900 border-b border-slate-800 text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,14 +61,14 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Navigation Links based on Role */}
+          {/* Navigation Links based on Route and Role */}
           {currentUser && (
-            <nav className="hidden md:flex items-center space-x-1">
-              {currentUser.role === 'admin' ? (
+            <nav className="hidden md:flex items-center space-x-1.5">
+              {isAdminRoute ? (
                 <>
                   <Link
                     href="/admin/dashboard"
-                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
                       pathname === '/admin/dashboard' ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
@@ -74,7 +76,7 @@ export default function Navbar() {
                   </Link>
                   <Link
                     href="/admin/sources"
-                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
                       pathname.startsWith('/admin/sources') ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
@@ -82,7 +84,7 @@ export default function Navbar() {
                   </Link>
                   <Link
                     href="/admin/questions"
-                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
                       pathname.startsWith('/admin/questions') ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
@@ -90,7 +92,7 @@ export default function Navbar() {
                   </Link>
                   <Link
                     href="/admin/tests"
-                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
                       pathname.startsWith('/admin/tests') ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
@@ -98,7 +100,7 @@ export default function Navbar() {
                   </Link>
                   <Link
                     href="/admin/candidates"
-                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
                       pathname.startsWith('/admin/candidates') ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
@@ -109,15 +111,15 @@ export default function Navbar() {
                 <>
                   <Link
                     href="/dashboard"
-                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
-                      pathname === '/dashboard' || pathname === '/candidate/dashboard' ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
+                      pathname === '/dashboard' ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
                     Dashboard
                   </Link>
                   <Link
                     href="/tests"
-                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
                       pathname.startsWith('/tests') ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
@@ -125,7 +127,7 @@ export default function Navbar() {
                   </Link>
                   <Link
                     href="/results"
-                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
                       pathname.startsWith('/results') ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
@@ -133,8 +135,8 @@ export default function Navbar() {
                   </Link>
                   <Link
                     href="/performance"
-                    className={`px-3 py-2 rounded-lg text-xs font-semibold transition ${
-                      pathname === '/performance' || pathname === '/candidate/progress' ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
+                      pathname === '/performance' ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-800'
                     }`}
                   >
                     Growth Analytics
@@ -145,12 +147,13 @@ export default function Navbar() {
           )}
 
           {/* User Profile & Actions */}
-          <div className="flex items-center space-x-3">
-            {currentUser && (
-              <div className="bg-slate-800/80 border border-slate-700 p-1 rounded-xl flex items-center">
+          <div className="flex items-center space-x-4">
+            {/* Show Role selection controls ONLY on admin routes */}
+            {currentUser && isAdminRoute && (
+              <div className="bg-slate-800 border border-slate-700 p-1 rounded-xl flex items-center space-x-1">
                 <button
                   onClick={() => handleRoleToggle('candidate')}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center space-x-1.5 transition ${
+                  className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition-all ${
                     currentUser.role === 'candidate'
                       ? 'bg-blue-600 text-white shadow-sm'
                       : 'text-slate-400 hover:text-slate-200'
@@ -162,7 +165,7 @@ export default function Navbar() {
 
                 <button
                   onClick={() => handleRoleToggle('admin')}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center space-x-1.5 transition ${
+                  className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition-all ${
                     currentUser.role === 'admin'
                       ? 'bg-purple-600 text-white shadow-sm'
                       : 'text-slate-400 hover:text-slate-200'
@@ -177,22 +180,29 @@ export default function Navbar() {
             {!currentUser ? (
               <Link
                 href="/login"
-                className="px-4 py-2 text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition shadow-lg shadow-blue-600/20"
+                className="px-4.5 py-2 text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition shadow-lg shadow-blue-600/20"
               >
                 Sign In
               </Link>
             ) : (
-              <div className="flex items-center space-x-3 border-l border-slate-800 pl-3">
+              <div className="flex items-center space-x-4 border-l border-slate-800 pl-4">
                 <div className="hidden sm:flex flex-col text-right">
-                  <span className="text-xs font-bold text-slate-200">{currentUser.fullName || 'Candidate'}</span>
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase">{currentUser.role} Mode</span>
+                  <span className="text-xs font-bold text-slate-200">
+                    {/* Render neutral 'Candidate' identity on candidate pages even if user role is admin */}
+                    {isAdminRoute ? (currentUser.fullName || 'Exam Admin') : (currentUser.role === 'admin' ? 'Candidate' : (currentUser.fullName || 'Candidate'))}
+                  </span>
+                  {isAdminRoute && (
+                    <span className="text-[10px] text-purple-400 font-extrabold uppercase tracking-wider mt-0.5">
+                      Admin Mode
+                    </span>
+                  )}
                 </div>
                 <button
                   onClick={handleSignOut}
                   title="Sign Out"
-                  className="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-red-400 rounded-xl transition text-xs font-semibold flex items-center space-x-1"
+                  className="px-3.5 py-2 bg-slate-850 hover:bg-slate-800 border border-slate-800 hover:text-red-400 rounded-xl transition-all text-xs font-bold flex items-center space-x-2 shadow-sm"
                 >
-                  <LogOut className="w-3.5 h-3.5" />
+                  <LogOut className="w-3.5 h-3.5 text-slate-400" />
                   <span className="hidden sm:inline">Sign Out</span>
                 </button>
               </div>
